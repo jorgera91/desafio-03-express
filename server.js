@@ -3,16 +3,16 @@ const Contenedor = require('./Contenedor');
 
 const app = express();
 
+const product = new Contenedor('./productos.txt');
+
 
 
 app.get('/productos', async (req, res) => {
-    const product = new Contenedor('./productos.txt');
     let allProducts = await product.getAll();
     res.send(allProducts);
 });
 
 app.get('/productoRandom', async (req, res) => {
-    const product = new Contenedor('./productos.txt');
     let rand = Math.floor(Math.random() * (3) +1);
     let productById = await product.getById(rand);
     res.send(productById);
