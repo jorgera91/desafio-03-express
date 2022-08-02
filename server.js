@@ -5,7 +5,9 @@ const app = express();
 
 const product = new Contenedor('./productos.txt');
 
-
+app.get('/',  (req, res) => {
+    res.send(`Servidor http escuchando al puerto ${server.address().port}`);
+});
 
 app.get('/productos', async (req, res) => {
     let allProducts = await product.getAll();
